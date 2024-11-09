@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import StudentForm from "./StudentForm";
+//import StudentList from "./StudentList";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Home() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="flex flex-col justify-center items-center h-screen">
+      <h1 className="text-2xl font-bold">
+        Welcome to the Student Registration App
+      </h1>
+      <a href="/form" className="text-blue-500 font-bold">
+        Register
+      </a>
+     
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/form" element={<StudentForm />} />
+         
+        </Routes>
+        <div className="bottom-0 left-0 right-0 bg-gray-200 p-4 flex justify-around">
+          <a href="/" className="text-blue-500 font-bold hover:underline">
+            Home
+          </a>
+          <a href="/form" className="text-blue-500 font-bold hover:underline">
+            Register :V
+          </a>
+         
+        </div>
+      </Router>
+    </>
+  );
+}
+
+export default App;
